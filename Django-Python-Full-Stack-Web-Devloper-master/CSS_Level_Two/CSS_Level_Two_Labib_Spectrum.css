@@ -1,0 +1,26 @@
+h1{
+font-family: 'Slabo 27px', serif;
+text-align: center;
+margin: 50px;
+}
+#td01{
+  background-color: #9BCBED
+}
+#td02{
+  background-color: #1C79AF
+}
+#td03{
+  background-color: #D5BECC
+}
+#td04{
+  background-color: #D3D2C7
+}
+#td05{
+  background-color: #E2E1B9
+}
+td{
+  height: 300px;
+  width: 150px;
+  padding: 10px;
+  border: 6px solid white;
+}
