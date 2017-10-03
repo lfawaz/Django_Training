@@ -1,0 +1,22 @@
+{% extends 'basic_app/base_basic_app.html'%}
+
+{% block body_block %}
+
+<div class="jumbotron">
+  <ul>
+    <li>{{ school_detail.name }}</li>
+    <li>{{ school_detail.princpal }}</li>
+    <li>{{ school_detail.location }}</li>
+  </ul>
+</div>
+
+{% for student in school_detail.students.all %}
+  <ul>
+    <li>{{ student.name }}</li>
+    <li>{{ student.age }}</li>
+  </ul>
+  <input type="submit" name="" value="">
+
+  <a href="{% url 'basic_app:update' pk=school_detail.pk %}">Update</a>
+{% endfor %}
+{% endblock %}
