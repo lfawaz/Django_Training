@@ -14,19 +14,54 @@
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Russo+One" rel="stylesheet">
 
+    <!--CSS Stylesheet  -->
+    <link rel="stylesheet" href="{% static css/blog.css}">
+
   </head>
   <body>
     <nav class="navbar navbar-default techfont custom-navbar">
       <div class="container">
-        <ul>
-          <li><a class="navbar-brand bigbrand techfont" href="{% url 'blog:list' %}">Posts</a></li>
-          <li><a href="{% url 'blog:about' %}">About</a></li>
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand bigbrand techfont" href="{% url 'list' %}">Posts</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="http://www.github.com">GitHub</a></li>
           <li><a href="http://www.linkedin.com">LinkedIn</a></li>
         </ul>
       </div>
 
     </nav>
+
+
+
+  <ul class="nav navbar-right">
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'create' %}">Create Post</a></li>
+    <li><a href="{% url 'draft' %}">Draft List</a></li>
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+    <li><a>Welcome {{ user.username }}</a></li>
+    {% else %}
+    <li><a href="{% url 'login'}"></a><span class="glyphicon glyphicon-user">Login</span></li>
+    {% endif %}
+  </ul>
+
+<!-- Page Content Goes here  -->
+  <div class="content container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="blog_post">
+          {% block block_content %}
+
+
+          {% endblock %}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 
   </body>
 </html>
