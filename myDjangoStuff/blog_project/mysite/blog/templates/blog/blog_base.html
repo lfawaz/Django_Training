@@ -4,9 +4,12 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <!-- BootStrap Link  -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <!-- Medium Style Editor -->
     <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
@@ -15,34 +18,31 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Russo+One" rel="stylesheet">
 
     <!--CSS Stylesheet  -->
-    <link rel="stylesheet" href="{% static css/blog.css}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
   </head>
-  <body>
+  <body class="loader">
     <nav class="navbar navbar-default techfont custom-navbar">
       <div class="container">
         <ul class="nav navbar-nav">
-          <li><a class="navbar-brand bigbrand techfont" href="{% url 'list' %}">Posts</a></li>
+          <li><a class="navbar-brand bigbrand techfont" href="{% url 'post_list' %}">Posts</a></li>
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="http://www.github.com">GitHub</a></li>
           <li><a href="http://www.linkedin.com">LinkedIn</a></li>
         </ul>
-      </div>
 
-    </nav>
-
-
-
-  <ul class="nav navbar-right">
+  <ul class="nav navbar-nav navbar-right">
     {% if user.is_authenticated %}
-    <li><a href="{% url 'create' %}">Create Post</a></li>
-    <li><a href="{% url 'draft' %}">Draft List</a></li>
+    <li><a href="{% url 'post_create' %}">Create Post</a></li>
+    <li><a href="{% url 'post_draft' %}">Draft List</a></li>
     <li><a href="{% url 'logout' %}">Logout</a></li>
     <li><a>Welcome {{ user.username }}</a></li>
     {% else %}
-    <li><a href="{% url 'login'}"></a><span class="glyphicon glyphicon-user">Login</span></li>
+    <li><a class="nav navbar-right" href="{% url 'login' %}"><span class="glyphicon glyphicon-user">Login</span></a></li>
     {% endif %}
   </ul>
+</div>
+</nav>
 
 <!-- Page Content Goes here  -->
   <div class="content container">

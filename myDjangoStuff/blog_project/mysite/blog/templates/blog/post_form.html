@@ -1,4 +1,4 @@
-{% extends 'blog/blog_base.html %'}
+{% extends 'blog/blog_base.html' %}
 
 {% block content %}
 <h1>New Post</h1>
@@ -8,5 +8,6 @@
   <button type="submit" class="save btn btn-default">Save</button>
 </form>
 
-<script>var editor = new MediumEditor(.editable)</script>
+<script>var editor = new MediumEditor('.editable');</script>
+
 {% endblock %}

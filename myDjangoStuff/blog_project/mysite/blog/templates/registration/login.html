@@ -8,7 +8,7 @@
 
   {% if form.error %}
   <p>Your form has an error, please correct.</p>
-  {% end if %}
+  {% endif %}
 
   <form action="{% url 'login' %}" method="POST">
     {% csrf_token %}
