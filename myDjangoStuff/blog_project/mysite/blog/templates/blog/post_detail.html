@@ -2,5 +2,40 @@
 
 {% block content %}
 
+<h1 class="loader">{{ post.title }}</h1>
 
+{% if post.published_date %}
+<div class="container">
+  {{ post.published_date }}
+</div>
+{% else %}
+<a class="btn btn-primary" href="{% 'post.post_publish' pk=post.pk  %}">Publish Post</a>
+{% end if %}
+
+<p class="postcontent">Post Title: {{ post.title|safe|linebreakbr }}</p>
+
+{% if user.is_authenticated %}
+<a class="btn btn-primary" href="{% url 'edit' pk=post.pk%}"><span class="glyphicon glyphicon-pencil">Edit Post</span></a>
+<a class="btn btn-primary" href="{% url 'remove' pk=post.pk%}"><span class="glyphicon glyphicon-remove">Edit Post</span></a>
+{% endif %}
+
+<hr>
+
+<a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk}">Add Comment to Post</a>
+<div class="">
+  {% for comment in post.comments.all %}
+  <br>
+  {% if user.is_authenticated or comment.approved_comment %}
+    {{ comment.created_date }}
+    {% if not comment.approved_comment%}
+    <a class="btn btn-default" href="{% url 'comment_approval' pk=post.pk%}"><span class="glyphicon glyphicon-ok">Edit Post</span></a>
+    <a class="btn btn-default" href="{% url 'comment_remove' pk=post.pk%}"><span class="glyphicon glyphicon-remove">Edit Post</span></a>
+    {% endif %}
+    <p>{{ comment.text|safe|linebreaks }}</p>
+    <p><strong>{{ comment.author }}</strong></p>
+  {% end if %}
+  {% empty %}
+  <p>No Comments</p>
+  {% endfor }
+</div>
 {% endblock %}
