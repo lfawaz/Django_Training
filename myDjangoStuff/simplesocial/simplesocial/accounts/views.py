@@ -7,6 +7,6 @@ from django.contrib.auth import login, logout
 
 
 class SignUpView(CreateView):
-        form = forms.UserCreateForm
+        form_class = forms.UserCreateForm
         success_url = reverse_lazy("login")
         template_name = "accounts/signup.html"
