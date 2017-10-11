@@ -1,0 +1,61 @@
+import, LoginRequiredMixin, reverse_lazy, HTTP404, views.generic, SelectRelatedMixin, models forms, get_user_model
+
+get User
+
+create PostList Class
+
+create UserPosts class with get_queryset to get all posts (try, except if user exists)
+get_context_data to return post_user_context (this requires template_name)
+
+create PostDetail class
+get_queryset get all posts for that user (use object relation models, customized get query call), return details of the post
+
+create CreatePostClass
+edit message and group
+check if the form is valid function
+(connect the post to the user)
+
+create DeletePostClass
+reverse_lazy(posts:all)
+def get_queryset() return queryset filtered by userid
+def delete (check documentation for CBV delete), messages.success(,self.request,'Post',Deleted'
+
+fill urls for posts.
+app = posts create url for allviews (?p<username>[-\w]+)
+(?p<pk>\d+)
+
+create templates
+
+post_base
+extend from base
+same as groups, (check, notes)
+
+post_form
+extend from base, load bootstrap3
+in post_content create form using boostrapform
+class of button btn btn-primary btn-large
+
+post_list
+if request.user.is_authenticated
+check notes for details
+
+for member group in get_user_group (registar = template.Library) check documentation
+
+_posts
+
+views for joinGroup() and LeaveGroup() use RedirectView and LoginRequiredMixin
+get_redirect_url reverse(groups:single with slug dict)
+get()
+group = get_object_or_404(Group,slug=self.kwargs.get('slug') (import it)
+try to create a groupmember (self.request), expect to check if user is a member
+else success, Your are a member
+
+LeaveGroup()
+same reverse call
+def get ()
+can't leave a group if you are in it
+
+create urls for leave and join group
+
+STATICFILES_DIRS
+link css and javascript and get files from note
